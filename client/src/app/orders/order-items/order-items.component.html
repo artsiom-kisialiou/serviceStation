@@ -1,0 +1,38 @@
+<h4 class="display-4">Order Car Item</h4>
+<hr>
+<form #form="ngForm" autocmoplete="off" (submit)="onSubmit(form)">
+        <input type="hidden"  name="OrderItemID" #OrderItemID="ngModel" [(ngModel)]="formData.OrderItemID">
+        <input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="formData.OrderID">
+      <input type="hidden"  name="ItemName" #ItemName="ngModel" [(ngModel)]="formData.itemName">
+    <div class="form-group">
+        <label>Model</label>
+        <select name="itemID" #itemID="ngModel" [(ngModel)]="formData.itemID" class="form-control" [class.is-invalid]="!isValid && service.formData.CustomerID==0">
+            <option value="0">-Select-</option>
+            <option *ngFor="let item of itemList" value="{{item.Model}}">{{item.Model}}</option>
+        </select>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+            <label>Make</label>
+            <div class="input-group">
+                <input name="Make" #Make="ngModel" [(ngModel)]="formData.Make" class="form-control" [class.is-invalid]="!isValid && formData.Make==0">
+            </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Quantity</label>
+        <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity" class="form-control" [class.is-invalid]="!isValid && formData.Quantity==0">
+    </div>
+    <div class="form-group col-md-6">
+            <label>Year</label>
+            <input name="Year" #Year="ngModel" [(ngModel)]="formData.Year" class="form-control" [class.is-invalid]="!isValid && formData.Year==0">
+        </div>
+    <div class="form-group col-md-6">
+            <label>VIN</label>
+            <input name="VIN" #VIN="ngModel" [(ngModel)]="formData.VIN" class="form-control" [class.is-invalid]="!isValid && formData.VIN==0">
+    </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-database"></i> Close</button>
+    </div>
+</form>
